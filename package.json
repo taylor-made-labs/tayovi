@@ -1,0 +1,24 @@
+{
+  "name": "tayovi",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tayovi template: personalization contract and invariant validator for A2UI v1.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit && node scripts/check-deps.mjs"
+  },
+  "dependencies": {
+    "@a2ui/web_core": "0.15.0",
+    "ajv": "8.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.0",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}

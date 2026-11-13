@@ -1,0 +1,131 @@
+{
+  "description": "A binding outside the scoped host data.",
+  "replaces": {
+    "personal": {
+      "messages": [
+        {
+          "version": "1.0",
+          "createSurface": {
+            "surfaceId": "home",
+            "catalogId": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "dataModel": {
+              "view": {
+                "title": "Welcome",
+                "count": 3
+              }
+            },
+            "metadata": {
+              "extensions": {
+                "tayovi": {
+                  "baseId": "base-2026-11-13",
+                  "contractVersion": "1.0.0",
+                  "capabilities": [
+                    "read.view"
+                  ],
+                  "nonRemovableCapabilities": [
+                    "read.view"
+                  ]
+                },
+                "other_tool": {
+                  "note": "kept as is",
+                  "list": [
+                    1,
+                    2,
+                    3
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "version": "1.0",
+          "updateComponents": {
+            "surfaceId": "home",
+            "components": [
+              {
+                "id": "root",
+                "component": "Column",
+                "children": [
+                  "body",
+                  "title",
+                  "submit"
+                ]
+              },
+              {
+                "id": "title",
+                "component": "Text",
+                "text": {
+                  "path": "/view/title"
+                },
+                "metadata": {
+                  "extensions": {
+                    "tayovi": {
+                      "role": "page-title",
+                      "protectedBindings": [
+                        "/view/title"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "id": "body",
+                "component": "Card",
+                "child": "bodyText"
+              },
+              {
+                "id": "bodyText",
+                "component": "Text",
+                "text": {
+                  "path": "/secrets/key"
+                }
+              },
+              {
+                "id": "submit",
+                "component": "Button",
+                "child": "submitLabel",
+                "action": {
+                  "event": {
+                    "name": "host.submit"
+                  }
+                },
+                "metadata": {
+                  "extensions": {
+                    "tayovi": {
+                      "protectedActions": [
+                        "host.submit"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "id": "submitLabel",
+                "component": "Text",
+                "text": "Submit"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "accepted": false,
+    "stages": [
+      "passed",
+      "passed",
+      "failed",
+      "not-run"
+    ],
+    "findings": [
+      {
+        "stage": "host-compat",
+        "code": "TAYOVI_DATA_OUT_OF_SCOPE",
+        "severity": "error",
+        "location": "/surfaces/home/components/bodyText"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "description": "A contract that names a catalog the host registry does not have.",
+  "replaces": {
+    "registry": {
+      "catalogs": [],
+      "components": [
+        {
+          "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+          "name": "Row"
+        },
+        {
+          "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+          "name": "Column"
+        },
+        {
+          "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+          "name": "Card"
+        },
+        {
+          "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+          "name": "List"
+        },
+        {
+          "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+          "name": "Text"
+        },
+        {
+          "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+          "name": "Button"
+        }
+      ],
+      "actions": [
+        {
+          "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+          "ref": "host.refresh"
+        },
+        {
+          "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+          "ref": "host.submit",
+          "confirmation": "host-owned"
+        }
+      ]
+    }
+  },
+  "expected": {
+    "accepted": false,
+    "stages": [
+      "not-run",
+      "not-run",
+      "not-run",
+      "not-run"
+    ],
+    "findings": [
+      {
+        "stage": "contract",
+        "code": "TAYOVI_CONTRACT_UNKNOWN_CATALOG",
+        "severity": "error",
+        "location": "/base/catalogs/0/id"
+      }
+    ]
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "description": "A contract that points at executable code.",
+  "replaces": {
+    "contract": {
+      "tayovi": "contract",
+      "contractVersion": "1.0.0",
+      "a2uiProtocol": "v1.0",
+      "app": {
+        "id": "template-host",
+        "name": "Template Host"
+      },
+      "base": {
+        "id": "base-2026-11-13",
+        "catalogs": [
+          {
+            "id": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "version": "1"
+          }
+        ],
+        "surfaces": [
+          {
+            "id": "home"
+          }
+        ]
+      },
+      "fork": {
+        "mustPin": [
+          "base.id",
+          "base.catalogs",
+          "base.surfaces",
+          "contractVersion"
+        ]
+      },
+      "policy": {
+        "allowedChanges": [
+          {
+            "id": "arrange",
+            "kind": "layout",
+            "components": [
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "Row"
+              },
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "Column"
+              },
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "Card"
+              },
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "List"
+              }
+            ]
+          },
+          {
+            "id": "compose",
+            "kind": "composition",
+            "components": [
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "Text"
+              },
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "Card"
+              },
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "Row"
+              },
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "Column"
+              }
+            ]
+          },
+          {
+            "id": "present",
+            "kind": "binding-presentation",
+            "components": [
+              {
+                "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+                "name": "Text"
+              }
+            ],
+            "properties": [
+              "text"
+            ]
+          }
+        ]
+      },
+      "host": {
+        "components": [
+          {
+            "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "name": "Row"
+          },
+          {
+            "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "name": "Column"
+          },
+          {
+            "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "name": "Card"
+          },
+          {
+            "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "name": "List"
+          },
+          {
+            "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "name": "Text"
+          },
+          {
+            "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "name": "Button"
+          }
+        ],
+        "data": [
+          {
+            "pointer": "/view",
+            "includeDescendants": true,
+            "scope": "interface-state"
+          },
+          {
+            "pointer": "/account",
+            "includeDescendants": true,
+            "scope": "host-owned"
+          }
+        ],
+        "actions": [
+          {
+            "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "ref": "host.refresh",
+            "sensitive": false
+          },
+          {
+            "catalog": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "ref": "host.submit",
+            "sensitive": true,
+            "confirmation": "host-owned"
+          }
+        ]
+      },
+      "capabilities": {
+        "available": [
+          "read.view",
+          "write.view"
+        ]
+      },
+      "invariants": {
+        "namespace": "tayovi",
+        "sources": [
+          {
+            "surface": "home"
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "kind": "implementation-ref",
+          "id": "impl-1"
+        }
+      ]
+    }
+  },
+  "expected": {
+    "accepted": false,
+    "stages": [
+      "not-run",
+      "not-run",
+      "not-run",
+      "not-run"
+    ],
+    "findings": [
+      {
+        "stage": "contract",
+        "code": "TAYOVI_ARTIFACT_KIND_UNSUPPORTED",
+        "severity": "error",
+        "location": "/artifacts/0/kind"
+      }
+    ]
+  }
+}

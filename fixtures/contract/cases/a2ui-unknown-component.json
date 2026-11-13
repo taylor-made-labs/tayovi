@@ -1,0 +1,131 @@
+{
+  "description": "A component that is not in the catalog.",
+  "replaces": {
+    "personal": {
+      "messages": [
+        {
+          "version": "1.0",
+          "createSurface": {
+            "surfaceId": "home",
+            "catalogId": "https://a2ui.org/specification/v1_0/catalogs/basic/catalog.json",
+            "dataModel": {
+              "view": {
+                "title": "Welcome",
+                "count": 3
+              }
+            },
+            "metadata": {
+              "extensions": {
+                "tayovi": {
+                  "baseId": "base-2026-11-13",
+                  "contractVersion": "1.0.0",
+                  "capabilities": [
+                    "read.view"
+                  ],
+                  "nonRemovableCapabilities": [
+                    "read.view"
+                  ]
+                },
+                "other_tool": {
+                  "note": "kept as is",
+                  "list": [
+                    1,
+                    2,
+                    3
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "version": "1.0",
+          "updateComponents": {
+            "surfaceId": "home",
+            "components": [
+              {
+                "id": "root",
+                "component": "Column",
+                "children": [
+                  "body",
+                  "title",
+                  "submit"
+                ]
+              },
+              {
+                "id": "title",
+                "component": "Text",
+                "text": {
+                  "path": "/view/title"
+                },
+                "metadata": {
+                  "extensions": {
+                    "tayovi": {
+                      "role": "page-title",
+                      "protectedBindings": [
+                        "/view/title"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "id": "body",
+                "component": "Card",
+                "child": "bodyText"
+              },
+              {
+                "id": "bodyText",
+                "component": "Nope",
+                "text": {
+                  "path": "/view/count"
+                }
+              },
+              {
+                "id": "submit",
+                "component": "Button",
+                "child": "submitLabel",
+                "action": {
+                  "event": {
+                    "name": "host.submit"
+                  }
+                },
+                "metadata": {
+                  "extensions": {
+                    "tayovi": {
+                      "protectedActions": [
+                        "host.submit"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "id": "submitLabel",
+                "component": "Text",
+                "text": "Submit"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "expected": {
+    "accepted": false,
+    "stages": [
+      "failed",
+      "not-run",
+      "not-run",
+      "not-run"
+    ],
+    "findings": [
+      {
+        "stage": "a2ui",
+        "code": "A2UI_VALIDATION_FAILED",
+        "severity": "error",
+        "location": "/surfaces/home/components/3/component"
+      }
+    ]
+  }
+}
